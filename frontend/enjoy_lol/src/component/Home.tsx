@@ -11,6 +11,7 @@ import { useHistory } from 'react-router'
 
 import { RootState } from '../redux/rootRedux';
 import {changeName} from '../redux/HomeRedux';
+import { EventAvailableTwoTone } from '@material-ui/icons';
 
 interface HomeProps {
   name: string
@@ -26,6 +27,11 @@ function Home (props: HomeProps) {
         id="nickName"
         placeholder='닉네임을 입력하세요'
         value={name} 
+        onKeyPress={(event : any) => {
+          if (event.key === 'Enter') {
+            push(`/${props.name}`)
+          }
+        }}
         onChange={(event: any) => changeName(event.target.value)}
         endAdornment={
           <InputAdornment position="end">
